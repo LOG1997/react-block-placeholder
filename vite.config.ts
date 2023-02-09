@@ -5,7 +5,7 @@ import typescript from "@rollup/plugin-typescript"
 import viteCompression from "vite-plugin-compression"
 
 import { visualizer } from "rollup-plugin-visualizer"
-
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 function resolve(str: string) {
   return path.resolve(__dirname, str)
 }
@@ -13,6 +13,7 @@ function resolve(str: string) {
 export default defineConfig({
   plugins: [
     react(),
+    cssInjectedByJsPlugin(),
     visualizer({
       emitFile: true, //是否被触摸
       filename: "test.html", //生成分析网页文件名
@@ -34,7 +35,7 @@ export default defineConfig({
     // 打包输出的目录
     outDir: "lib",
     minify: true,
-    cssCodeSplit: true,
+    // cssCodeSplit: true,
     lib: {
       // 入口指向组件库入口模块
       entry: resolve("packages/index.ts"),
