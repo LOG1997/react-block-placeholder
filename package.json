@@ -1,27 +1,27 @@
 {
   "name": "react-block-placeholder",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.3",
   "type": "module",
-  "main": "./dist/myapp.umd.cjs",
-  "module": "./dist/myapp.js",
-  "types": ".dist/components/index.d.ts",
+  "main": "./lib/myapp.umd.cjs",
+  "module": "./lib/myapp.js",
+  "types": ".lib/components/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/myapp.js",
-      "require": "./dist/myapp.umd.cjs"
+      "import": "./lib/myapp.js",
+      "require": "./lib/myapp.umd.cjs"
     }
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/LOG1997/react-block-placeholder"
   },
-  "homepage": "",
+  "homepage": "https://github.com/LOG1997/react-block-placeholder",
   "files": [
     "package.json",
     "README.md",
     "LICENSE",
-    "dist"
+    "lib"
   ],
   "keywords": [
     "react components",
@@ -37,15 +37,20 @@
   },
   "dependencies": {
     "@types/node": "^18.13.0",
-    "vite-plugin-dts": "^1.7.2",
+    "konva": "^8.4.2",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-block-placeholder": "^0.0.1",
+    "react-dom": "^18.2.0",
+    "react-konva": "^18.2.4",
+    "vite-plugin-dts": "^1.7.2"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.5.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "antd": "^5.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.58.0",
