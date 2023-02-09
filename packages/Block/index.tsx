@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react'
 import type { TPlaceHolder, TBlockStyle } from './type'
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash-es';
 import { getRandomHex } from '../utils'
 import './index.scss'
 export default function PlaceholderBlock(props: TPlaceHolder) {
@@ -10,7 +10,6 @@ export default function PlaceholderBlock(props: TPlaceHolder) {
     const [offsetLeft, setOffsetLeft] = React.useState(0);
     const [offsetWidth, setOffsetWidth] = React.useState(0);
     const [offsetHeight, setOffsetHeight] = React.useState(0);
-    const [offsetParent, setOffsetParent] = React.useState(0);
     const [offsetTopParent, setOffsetTopParent] = React.useState(0);
     const [offsetLeftParent, setOffsetLeftParent] = React.useState(0);
 
@@ -76,7 +75,11 @@ export default function PlaceholderBlock(props: TPlaceHolder) {
                         offsetTop to parent:{offsetTopParent}
                     </span>
                 </div>
-                <div className='line parentLeftLine'></div>
+                <div className='line parentLeftLine' style={{ width: 1, height: offsetTopParent, backgroundImage: `linear-gradient(to right,${getRandomHex()} 0%, ${getRandomHex()} 100%)`, top: offsetWidth / 3, left: -offsetLeft }}>
+                    <span className='showText' style={{ backgroundImage: `linear-gradient(120deg,${getRandomHex()} 0%, ${getRandomHex()} 100%)` }}>
+                        offsetLeft to parent:{offsetLeftParent}
+                    </span>
+                </div>
             </> : null}
         </div >
     )
