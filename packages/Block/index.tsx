@@ -15,7 +15,7 @@ export default function PlaceholderBlock(props: TPlaceHolder) {
 
     const refDom = useRef(null);
     let linear_gradient = `linear-gradient(120deg, ${getRandomHex()} 0%,  ${getRandomHex()} 100%)`;
-    const { w = 200, h = 70, bgColor = linear_gradient, color = "#fff", isGuideLines = true, isCSSStyles = true, text = "placeholder", round = true } = props;
+    const { w = 200, h = 70, bgColor = linear_gradient, color = "#fff", isGuideLines = false, isCSSStyles = true, text = "placeholder", round = true } = props;
     let style: TBlockStyle = {
         width: w,
         height: h,
@@ -23,7 +23,6 @@ export default function PlaceholderBlock(props: TPlaceHolder) {
         color: color,
         borderRadius: rounded_value,
         lineHeight: h + 'px',
-        border: "none"
     }
     if (round) {
         style.borderRadius = w > h ? parseInt(h as string) / 9 : parseInt(w as string) / 9;
@@ -33,8 +32,10 @@ export default function PlaceholderBlock(props: TPlaceHolder) {
         delete style['backgroundColor'];
     }
     const handleHover = debounce((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        getOffset(e);
-        setIsShowLine(true);
+        if (isGuideLines) {
+            getOffset(e);
+            setIsShowLine(true);
+        }
     }, 300);
     const handleMouseLeave = debounce((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         setIsShowLine(false);
@@ -59,7 +60,7 @@ export default function PlaceholderBlock(props: TPlaceHolder) {
     return (
         <div style={{ position: "relative" }}>
             <div ref={refDom} className='placeholder-block' onMouseOver={handleHover} onMouseLeave={handleMouseLeave} style={style}>{text}</div>
-            {isShowLine ? <>
+            {(isGuideLines && isShowLine) ? <>
                 <div className='line topLine' style={{ width: 1, height: offsetTop, backgroundImage: `linear-gradient(to top,${getRandomHex()} 0%, ${getRandomHex()} 100%)`, top: -offsetTop, left: offsetWidth / 2 }}>
                     <span className='showText' style={{ backgroundImage: `linear-gradient(120deg,${getRandomHex()} 0%, ${getRandomHex()} 100%)` }}>
                         offsetTop to root：{offsetTop}

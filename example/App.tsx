@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Button></Button>
-      <PlaceholderBlock w={100}></PlaceholderBlock>
+      <PlaceholderBlock></PlaceholderBlock>
     </div>
   )
 }
